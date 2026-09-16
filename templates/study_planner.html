@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartCampus - Study Planner</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        .page-header {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .page-header h1 {
+            margin-bottom: 8px;
+        }
+
+        .page-header p {
+            color: #666;
+        }
+
+        .plans-section {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .plans-section h2 {
+            margin-top: 0;
+        }
+
+        .empty-message {
+            text-align: center;
+            color: #777;
+            padding: 20px;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            background: #1e3a8a;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+        .back-button:hover {
+            background: #162d6b;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <a href="/">Home</a>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/timetable">Timetable</a>
+    <a href="/study-planner">Study Planner</a>
+    <a href="/assignments">Assignments</a>
+    <a href="/attendance">Attendance</a>
+    <a href="/notices">Notices</a>
+    <a href="/ai-suggestions">AI Suggestions</a>
+    <a href="/logout">Logout</a>
+</nav>
+
+<div class="container">
+
+    <div class="page-header">
+        <h1>📚 Study Planner</h1>
+        <p>Organize your subjects and daily study activities.</p>
+    </div>
+
+    <form method="POST">
+
+        <h2>Add Study Plan</h2>
+
+        <label for="subject">Subject</label>
+
+        <select id="subject" name="subject" required>
+            <option value="">Select Subject</option>
+            <option value="Python">Python</option>
+            <option value="DBMS">DBMS</option>
+            <option value="Cloud Computing">Cloud Computing</option>
+            <option value="Web Technology">Web Technology</option>
+            <option value="Machine Learning">Machine Learning</option>
+            <option value="Blockchain">Blockchain</option>
+        </select>
+
+        <label for="topic">Topic</label>
+
+        <input
+            type="text"
+            id="topic"
+            name="topic"
+            placeholder="Enter study topic"
+            required
+        >
+
+        <label for="date">Study Date</label>
+
+        <input
+            type="date"
+            id="date"
+            name="date"
+            required
+        >
+
+        <button type="submit">➕ Add Study Plan</button>
+
+    </form>
+
+    <div class="plans-section">
+
+        <h2>📋 Your Study Plans</h2>
+
+        {% if plans %}
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Topic</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for plan in plans %}
+
+                <tr>
+                    <td>{{ plan[1] }}</td>
+                    <td>{{ plan[2] }}</td>
+                    <td>{{ plan[3] }}</td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+        {% else %}
+
+        <div class="empty-message">
+            No study plans added yet.
+        </div>
+
+        {% endif %}
+
+    </div>
+
+    <a href="/dashboard" class="back-button">
+        ← Back to Dashboard
+    </a>
+
+</div>
+
+<footer>
+    <p>SmartCampus © 2026</p>
+</footer>
+
+</body>
+</html>

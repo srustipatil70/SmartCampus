@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartCampus - Attendance</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        .page-header {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .page-header h1 {
+            margin-bottom: 8px;
+        }
+
+        .page-header p {
+            color: #666;
+        }
+
+        .attendance-section {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .attendance-section h2 {
+            margin-top: 0;
+        }
+
+        .empty-message {
+            text-align: center;
+            color: #777;
+            padding: 20px;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            background: #1e3a8a;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+        .back-button:hover {
+            background: #162d6b;
+        }
+
+        .percentage {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <a href="/">Home</a>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/timetable">Timetable</a>
+    <a href="/study-planner">Study Planner</a>
+    <a href="/assignments">Assignments</a>
+    <a href="/attendance">Attendance</a>
+    <a href="/notices">Notices</a>
+    <a href="/ai-suggestions">AI Suggestions</a>
+    <a href="/logout">Logout</a>
+</nav>
+
+<div class="container">
+
+    <div class="page-header">
+        <h1>📊 Attendance Tracker</h1>
+        <p>Track your attendance subject by subject.</p>
+    </div>
+
+    <form method="POST">
+
+        <h2>Add / Update Attendance</h2>
+
+        <label for="subject">Subject</label>
+
+        <select id="subject" name="subject" required>
+            <option value="">Select Subject</option>
+            <option value="Python">Python</option>
+            <option value="DBMS">DBMS</option>
+            <option value="Cloud Computing">Cloud Computing</option>
+            <option value="Web Technology">Web Technology</option>
+            <option value="Machine Learning">Machine Learning</option>
+            <option value="Blockchain">Blockchain</option>
+        </select>
+
+        <label for="attended">Classes Attended</label>
+
+        <input
+            type="number"
+            id="attended"
+            name="attended"
+            min="0"
+            placeholder="Enter attended classes"
+            required
+        >
+
+        <label for="total">Total Classes</label>
+
+        <input
+            type="number"
+            id="total"
+            name="total"
+            min="1"
+            placeholder="Enter total classes"
+            required
+        >
+
+        <button type="submit">📊 Save Attendance</button>
+
+    </form>
+
+    <div class="attendance-section">
+
+        <h2>📋 Attendance Details</h2>
+
+        {% if attendance_data %}
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Attended</th>
+                    <th>Total</th>
+                    <th>Percentage</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for record in attendance_data %}
+
+                <tr>
+                    <td>{{ record[0] }}</td>
+                    <td>{{ record[1] }}</td>
+                    <td>{{ record[2] }}</td>
+                    <td class="percentage">
+                        {{ record[3] }}%
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+        {% else %}
+
+        <div class="empty-message">
+            No attendance records added yet.
+        </div>
+
+        {% endif %}
+
+    </div>
+
+    <a href="/dashboard" class="back-button">
+        ← Back to Dashboard
+    </a>
+
+</div>
+
+<footer>
+    <p>SmartCampus © 2026</p>
+</footer>
+
+</body>
+</html>

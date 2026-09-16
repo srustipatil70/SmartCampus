@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SmartCampus - Home</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        .hero {
+            text-align: center;
+            padding: 45px 20px 30px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .hero h2 {
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            color: #666;
+            font-size: 17px;
+            margin-bottom: 25px;
+        }
+
+        .hero-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .hero-button:hover {
+            opacity: 0.85;
+        }
+
+        .section-title {
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .card {
+            background: white;
+            padding: 25px 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .card a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 9px 18px;
+            background: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 7px;
+        }
+
+        .card a:hover {
+            opacity: 0.85;
+        }
+
+        .ai-home-card {
+            max-width: 850px;
+            margin: 35px auto;
+            padding: 28px;
+            background: white;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+        }
+
+        .ai-home-card p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .ai-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 11px 22px;
+            background: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+        .ai-button:hover {
+            opacity: 0.85;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <a href="/">Home</a>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/timetable">Timetable</a>
+    <a href="/study-planner">Study Planner</a>
+    <a href="/assignments">Assignments</a>
+    <a href="/attendance">Attendance</a>
+    <a href="/notices">Notices</a>
+    <a href="/ai-suggestions">🤖 AI Suggestions</a>
+</nav>
+
+
+<div class="home">
+
+    <!-- HERO SECTION -->
+
+    <div class="hero">
+
+        <h1>🎓 SmartCampus</h1>
+
+        <h2>Your Smart College Companion</h2>
+
+        <p>
+            Manage your timetable, study plans, assignments,
+            attendance and college notices in one place.
+        </p>
+
+        <a class="hero-button" href="/dashboard">
+            Go to Dashboard →
+        </a>
+
+    </div>
+
+
+    <!-- FEATURES -->
+
+    <h2 class="section-title">✨ SmartCampus Features</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>📅 Timetable</h3>
+            <p>
+                View your daily class timetable
+                and stay organized.
+            </p>
+            <a href="/timetable">Open</a>
+        </div>
+
+
+        <div class="card">
+            <h3>📚 Study Planner</h3>
+            <p>
+                Plan and organize your
+                study schedule.
+            </p>
+            <a href="/study-planner">Open</a>
+        </div>
+
+
+        <div class="card">
+            <h3>📝 Assignments</h3>
+            <p>
+                Track assignments and
+                important deadlines.
+            </p>
+            <a href="/assignments">Open</a>
+        </div>
+
+
+        <div class="card">
+            <h3>📊 Attendance</h3>
+            <p>
+                Check your subject-wise
+                attendance information.
+            </p>
+            <a href="/attendance">Open</a>
+        </div>
+
+
+        <div class="card">
+            <h3>📢 Notices</h3>
+            <p>
+                View important college
+                announcements.
+            </p>
+            <a href="/notices">Open</a>
+        </div>
+
+    </div>
+
+
+    <!-- AI SECTION -->
+
+    <div class="ai-home-card">
+
+        <h2>🤖 AI Study Assistant</h2>
+
+        <p>
+            Get smart study suggestions based on
+            your study plans, assignments and
+            academic information.
+        </p>
+
+        <a class="ai-button" href="/ai-suggestions">
+            View AI Suggestions
+        </a>
+
+    </div>
+
+</div>
+
+
+<footer>
+    ©️ 2026 SmartCampus | Student Academic Management System
+</footer>
+
+</body>
+</html>

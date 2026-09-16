@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartCampus - Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        .welcome {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .welcome h1 {
+            margin-bottom: 8px;
+        }
+
+        .welcome p {
+            color: #666;
+        }
+
+        .dashboard-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 20px;
+        }
+
+        .dashboard-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .dashboard-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .number {
+            font-size: 30px;
+            font-weight: bold;
+            color: #222;
+            margin: 10px 0;
+        }
+
+        .dashboard-card small {
+            color: #666;
+        }
+
+        .section {
+            background: white;
+            margin-top: 25px;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .section h2 {
+            margin-top: 0;
+        }
+
+        .quick-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .quick-buttons a {
+            background: #1e3a8a;
+            color: white;
+            text-decoration: none;
+            padding: 12px 18px;
+            border-radius: 8px;
+        }
+
+        .quick-buttons a:hover {
+            background: #162d6b;
+        }
+
+        .ai-button {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+        }
+
+        .ai-button:hover {
+            background: #15803d;
+        }
+
+        @media (max-width: 600px) {
+            .dashboard-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <a href="/">Home</a>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/timetable">Timetable</a>
+    <a href="/study-planner">Study Planner</a>
+    <a href="/assignments">Assignments</a>
+    <a href="/attendance">Attendance</a>
+    <a href="/notices">Notices</a>
+    <a href="/ai-suggestions">AI Suggestions</a>
+    <a href="/logout">Logout</a>
+</nav>
+
+<div class="container">
+
+    <div class="welcome">
+        <h1>Welcome, {{ user_name }} 👋</h1>
+        <p>Your SmartCampus academic dashboard</p>
+    </div>
+
+    <div class="dashboard-cards">
+
+        <div class="dashboard-card">
+            <h3>📚 Subjects</h3>
+            <div class="number">6</div>
+            <small>Current subjects</small>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>📖 Study Plans</h3>
+            <div class="number">{{ study_count }}</div>
+            <small>Total study plans</small>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>📝 Assignments</h3>
+            <div class="number">{{ assignment_count }}</div>
+            <small>Total assignments</small>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>📊 Attendance</h3>
+            <div class="number">{{ attendance_percentage }}%</div>
+            <small>Overall attendance</small>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>📢 Notices</h3>
+            <div class="number">{{ notice_count }}</div>
+            <small>Total notices</small>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>⏰ Next Assignment</h3>
+
+            {% if upcoming_assignment %}
+                <div class="number">
+                    {{ upcoming_assignment[1] }}
+                </div>
+
+                <small>
+                    {{ upcoming_assignment[0] }}
+                    <br>
+                    Due: {{ upcoming_assignment[2] }}
+                </small>
+            {% else %}
+                <div class="number">—</div>
+                <small>No assignments yet</small>
+            {% endif %}
+        </div>
+
+    </div>
+
+    <div class="section">
+
+        <h2>🔗 Quick Access</h2>
+
+        <div class="quick-buttons">
+            <a href="/timetable">📅 Timetable</a>
+            <a href="/study-planner">📖 Study Planner</a>
+            <a href="/assignments">📝 Assignments</a>
+            <a href="/attendance">📊 Attendance</a>
+            <a href="/notices">📢 Notices</a>
+        </div>
+
+    </div>
+
+    <div class="section">
+
+        <h2>🤖 AI Study Assistant</h2>
+
+        <p>
+            Get personalized study suggestions based on your
+            study plans, assignments and attendance.
+        </p>
+
+        <a href="/ai-suggestions" class="ai-button">
+            View AI Suggestions
+        </a>
+
+    </div>
+
+</div>
+
+<footer>
+    <p>SmartCampus © 2026</p>
+</footer>
+
+</body>
+</html>

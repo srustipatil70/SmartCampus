@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartCampus - Timetable</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        .page-header {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .page-header h1 {
+            margin-bottom: 8px;
+        }
+
+        .page-header p {
+            color: #666;
+        }
+
+        .table-section {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            overflow-x: auto;
+        }
+
+        .timetable {
+            min-width: 750px;
+        }
+
+        .timetable th,
+        .timetable td {
+            padding: 14px 10px;
+        }
+
+        .break {
+            background: #f1f5f9;
+            font-weight: bold;
+        }
+
+        .lab {
+            font-weight: bold;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            background: #1e3a8a;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+        .back-button:hover {
+            background: #162d6b;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <a href="/">Home</a>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/timetable">Timetable</a>
+    <a href="/study-planner">Study Planner</a>
+    <a href="/assignments">Assignments</a>
+    <a href="/attendance">Attendance</a>
+    <a href="/notices">Notices</a>
+    <a href="/ai-suggestions">AI Suggestions</a>
+    <a href="/logout">Logout</a>
+</nav>
+
+<div class="container">
+
+    <div class="page-header">
+        <h1>📅 Class Timetable</h1>
+        <p>Your weekly academic schedule.</p>
+    </div>
+
+    <div class="table-section">
+
+        <table class="timetable">
+
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Monday</th>
+                    <th>Tuesday</th>
+                    <th>Wednesday</th>
+                    <th>Thursday</th>
+                    <th>Friday</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>9:00 - 10:00</td>
+                    <td>Python</td>
+                    <td>DBMS</td>
+                    <td>Cloud Computing</td>
+                    <td>Web Technology</td>
+                    <td>Machine Learning</td>
+                </tr>
+
+                <tr>
+                    <td>10:00 - 11:00</td>
+                    <td>DBMS</td>
+                    <td>Python</td>
+                    <td>Web Technology</td>
+                    <td>Machine Learning</td>
+                    <td>Cloud Computing</td>
+                </tr>
+
+                <tr class="break">
+                    <td>11:00 - 11:15</td>
+                    <td colspan="5">☕ Short Break</td>
+                </tr>
+
+                <tr>
+                    <td>11:15 - 12:15</td>
+                    <td>Machine Learning</td>
+                    <td>Cloud Computing</td>
+                    <td>Python</td>
+                    <td>DBMS</td>
+                    <td>Web Technology</td>
+                </tr>
+
+                <tr>
+                    <td>12:15 - 1:15</td>
+                    <td>Web Technology</td>
+                    <td>Machine Learning</td>
+                    <td>DBMS</td>
+                    <td>Python</td>
+                    <td>Cloud Computing</td>
+                </tr>
+
+                <tr class="break">
+                    <td>1:15 - 2:00</td>
+                    <td colspan="5">🍴 Lunch Break</td>
+                </tr>
+
+                <tr>
+                    <td>2:00 - 3:00</td>
+                    <td class="lab">Python Lab</td>
+                    <td>Blockchain</td>
+                    <td class="lab">Web Technology Lab</td>
+                    <td>Blockchain</td>
+                    <td>Project Work</td>
+                </tr>
+
+                <tr>
+                    <td>3:00 - 4:00</td>
+                    <td>Project Work</td>
+                    <td class="lab">DBMS Lab</td>
+                    <td>Project Work</td>
+                    <td class="lab">Cloud Computing Lab</td>
+                    <td>Seminar</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <a href="/dashboard" class="back-button">
+        ← Back to Dashboard
+    </a>
+
+</div>
+
+<footer>
+    <p>SmartCampus © 2026</p>
+</footer>
+
+</body>
+</html>

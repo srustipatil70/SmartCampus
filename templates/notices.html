@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartCampus - Notices</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        .page-header {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .page-header h1 {
+            margin-bottom: 8px;
+        }
+
+        .page-header p {
+            color: #666;
+        }
+
+        .notice-list {
+            margin-top: 25px;
+        }
+
+        .notice-card {
+            background: white;
+            padding: 22px;
+            margin-bottom: 18px;
+            border-radius: 12px;
+            border-left: 5px solid #1e3a8a;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .notice-card h3 {
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .notice-card p {
+            line-height: 1.6;
+            margin: 8px 0;
+        }
+
+        .notice-date {
+            color: #777;
+            font-size: 13px;
+        }
+
+        .empty-message {
+            background: white;
+            padding: 25px;
+            text-align: center;
+            color: #777;
+            border-radius: 12px;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            background: #1e3a8a;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+        .back-button:hover {
+            background: #162d6b;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <a href="/">Home</a>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/timetable">Timetable</a>
+    <a href="/study-planner">Study Planner</a>
+    <a href="/assignments">Assignments</a>
+    <a href="/attendance">Attendance</a>
+    <a href="/notices">Notices</a>
+    <a href="/ai-suggestions">AI Suggestions</a>
+    <a href="/logout">Logout</a>
+</nav>
+
+<div class="container">
+
+    <div class="page-header">
+        <h1>📢 Campus Notices</h1>
+        <p>Stay updated with important academic announcements.</p>
+    </div>
+
+    <form method="POST">
+
+        <h2>Add Notice</h2>
+
+        <label for="title">Notice Title</label>
+
+        <input
+            type="text"
+            id="title"
+            name="title"
+            placeholder="Enter notice title"
+            required
+        >
+
+        <label for="message">Message</label>
+
+        <textarea
+            id="message"
+            name="message"
+            placeholder="Enter notice message"
+            required
+        ></textarea>
+
+        <button type="submit">📢 Publish Notice</button>
+
+    </form>
+
+    <div class="notice-list">
+
+        <h2>📋 Recent Notices</h2>
+
+        {% if notices %}
+
+            {% for notice in notices %}
+
+            <div class="notice-card">
+
+                <h3>{{ notice[1] }}</h3>
+
+                <p>{{ notice[2] }}</p>
+
+                <div class="notice-date">
+                    📅 {{ notice[3] }}
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="empty-message">
+                No notices available yet.
+            </div>
+
+        {% endif %}
+
+    </div>
+
+    <a href="/dashboard" class="back-button">
+        ← Back to Dashboard
+    </a>
+
+</div>
+
+<footer>
+    <p>SmartCampus © 2026</p>
+</footer>
+
+</body>
+</html>
